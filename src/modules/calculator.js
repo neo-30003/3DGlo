@@ -1,3 +1,5 @@
+import { animate } from "./helpers";
+
 const calculator = (price = 100) => {
   const calcBlock = document.querySelector(".calc-block");
   const calcType = document.querySelector(".calc-type");
@@ -38,7 +40,19 @@ const calculator = (price = 100) => {
       totalValue = 0;
     }
 
-    total.textContent = totalValue;
+    if (totalValue !== 0) {
+      animate({
+        duration: 1000,
+        timing(timeFraction) {
+          return timeFraction;
+        },
+        draw(progress) {
+          total.textContent =
+            +total.textContent +
+            Math.round(progress * (totalValue - total.textContent));
+        },
+      });
+    }
   };
 
   calcBlock.addEventListener("input", (e) => {
