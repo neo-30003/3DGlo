@@ -38,7 +38,23 @@ const calculator = (price = 100) => {
       totalValue = 0;
     }
 
-    total.textContent = totalValue;
+    let time = 5;
+    let step = 1;
+
+    const calcAnimation = (num, elem) => {
+      let n = 0;
+      const t = Math.round(time / (num / step));
+      const interval = setInterval(() => {
+        n += step;
+        if (n == num) {
+          clearInterval(interval);
+        }
+        total.textContent = n;
+      }, t);
+    };
+    if (totalValue !== 0) {
+      calcAnimation(totalValue, total);
+    }
   };
 
   calcBlock.addEventListener("input", (e) => {
