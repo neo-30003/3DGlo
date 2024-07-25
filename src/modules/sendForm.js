@@ -71,6 +71,10 @@ const sendForm = ({ formId, someElem = [] }) => {
         .catch((error) => {
           showStatus("error");
         });
+
+      setTimeout(() => {
+        statusBlock.textContent = "";
+      }, 5000);
     } else {
       alert("Данные не валидны");
     }
