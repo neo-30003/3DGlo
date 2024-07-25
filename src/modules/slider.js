@@ -19,6 +19,7 @@ const slider = (classSlider, classSlides, classDots) => {
     dotsBlock.insertAdjacentHTML("beforeend", `<li class="dot"></li>`);
   });
   const dots = document.querySelectorAll(classDots);
+  dots[0].classList.add("dot-active");
 
   const prevSlide = (elems, index, strClass) => {
     elems[index].classList.remove(strClass);
